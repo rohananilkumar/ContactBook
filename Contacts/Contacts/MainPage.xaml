@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Contacts.MainPage"
+             BackgroundColor="White"
+             NavigationPage.HasNavigationBar="True"
+             Title="My Contacts"
+                >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="NewContact" Text="New" Clicked="NewContact_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ContactsNameLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+            <Style x:Key="ContactsNumberLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="#383838"/>
+                <Setter Property="FontSize" Value="15"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ScrollView>
+        <StackLayout x:Name="PageStackLayout">
+            <StackLayout Padding="10,5,10,5">
+                <SearchBar 
+                    x:Name="SearchContacts"
+                    TextChanged="SearchContacts_TextChanged"
+                    TextColor="White"
+                    PlaceholderColor="#dbdbdb"
+                    BackgroundColor="#737373"
+                    Placeholder="Search Contacts..."
+                    />
+            </StackLayout>
+
+
+            <ListView x:Name="ContactListView" HasUnevenRows="True" SeparatorColor="White" ItemSelected="ContactListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem x:Name="Call" Text="Call" Clicked="Call_Clicked" CommandParameter="{Binding .}"/>
+                                <MenuItem x:Name="Edit" Text="Edit" Clicked="Edit_Clicked" CommandParameter="{Binding .}"/>
+                                <MenuItem x:Name="Delete" Text="Delete" Clicked="Delete_Clicked" CommandParameter="{Binding .}"/>
+                            </ViewCell.ContextActions>
+                            <Grid x:Name="ContactStackLayout" Padding="10,0,0,10" BackgroundColor="#dbdbdb" Margin="10,0,10,10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="80"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout VerticalOptions="Center" Grid.Row="0" Grid.Column="0">
+                                    <Label Text="{Binding Name}" Style="{StaticResource ContactsNameLabel}"/>
+                                    <Label Text="{Binding Phone}" Style="{StaticResource ContactsNumberLabel}"/>
+                                </StackLayout>
+                                <Button Grid.Column="1" Grid.Row="0" VerticalOptions="Center" CornerRadius="50" Text="Call" Clicked="Call_Clicked" CommandParameter="{Binding .}" BackgroundColor="#999999"/>
+                                <Button Grid.Column="2" Grid.Row="0" VerticalOptions="Center" CornerRadius="50" Text="Edit" Clicked="Edit_Clicked" CommandParameter="{Binding .}" BackgroundColor="#999999"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

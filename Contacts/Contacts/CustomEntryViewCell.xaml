@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Contacts.CustomEntryViewCell">
+    
+    <Grid Margin="20,10,0,10">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="500"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Label}" VerticalOptions="Center" TextColor="Black" FontSize="15"/>
+        <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Entry}"
+               Keyboard="{Binding Keyboard}"
+               Placeholder="{Binding EntryPlaceholder}"
+               FontAttributes="Bold"
+               HorizontalOptions="FillAndExpand"
+               TextColor="Black"
+               FontSize="14"
+               BackgroundColor="#f0f0f0"
+               
+               />
+    </Grid>
+
+</ViewCell>

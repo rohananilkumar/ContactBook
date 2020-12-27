@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Contacts"
+             x:Class="Contacts.EditContact"
+             Title="New Contact"
+             BackgroundColor="White">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" IsDestructive="True" x:Name="DeleteContact" Clicked="DeleteContact_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            
+       
+                <StackLayout>
+            
+                <TableView HasUnevenRows="True">
+                    <TableRoot>
+                    
+                        <TableSection Title="Name">
+                            <local:CustomEntryViewCell x:Name="FirstName" Label="First Name"/>
+                            <local:CustomEntryViewCell x:Name="LastName" Label="Last Name"/>
+                        </TableSection>
+
+                        <TableSection Title="Contact">
+                            <local:CustomEntryViewCell x:Name="Phone" Label="Phone" Keyboard="Telephone"/>
+                            <local:CustomEntryViewCell x:Name="Email" Label="Email" Keyboard="Email"/>
+                        </TableSection>
+
+                        <TableSection Title="Employment">
+                            <local:CustomEntryViewCell x:Name="Company" Label="Company"/>
+                            <local:CustomEntryViewCell x:Name="JobTitle" Label="JobTitle"/>
+                        </TableSection>
+
+                        <TableSection Title="Address">
+                            <local:CustomEntryViewCell x:Name="Street" Label="Street"/>
+                            <local:CustomEntryViewCell x:Name="City" Label="City"/>
+                            <local:CustomEntryViewCell x:Name="State" Label="State"/>
+                            <local:CustomEntryViewCell x:Name="Zip" Label="Zip" Keyboard="Numeric"/>
+                        </TableSection>
+
+                        <TableSection>
+                            <ViewCell>
+                                <AbsoluteLayout>
+                                    <Button x:Name="SaveContact"
+                                            Text="Save"
+                                            HorizontalOptions="FillAndExpand" 
+                                            Clicked="SaveContact_Clicked" 
+                                            BackgroundColor="#696969"
+                                            TextColor="White"
+                                            CornerRadius="15"
+                                            AbsoluteLayout.LayoutBounds=".5,.5,.75,1"
+                                            AbsoluteLayout.LayoutFlags="All"/>
+                                </AbsoluteLayout>
+                            </ViewCell>
+                        </TableSection>
+                    
+                    </TableRoot>
+                </TableView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
